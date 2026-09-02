@@ -1,10 +1,9 @@
 from pathlib import Path
-
 import joblib
+import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import streamlit as st
 from sklearn.metrics import confusion_matrix, roc_curve
 
 
@@ -44,7 +43,7 @@ except FileNotFoundError as error:
     st.error(
         "A required final model file could not be found. "
         "Please make sure the 'Final Models' folder is present "
-        "beside App.py and contains all three .pkl files."
+        "beside App1.py and contains all three .pkl files."
     )
 
     st.stop()
@@ -142,7 +141,7 @@ TRAINING_RANGES = {
 # ============================================================
 
 st.set_page_config(
-    page_title="Heart Disease Prediction",
+    page_title="Heart Disease Predictor",
     page_icon="❤️",
     layout="wide"
 )
@@ -154,6 +153,15 @@ st.set_page_config(
 
 st.markdown("""
 <style>
+
+/* ----------------------------------------------------------
+   Remove Streamlit Native Top Header
+---------------------------------------------------------- */
+
+[data-testid="stHeader"] {
+    display: none;
+}
+
 
 /* ----------------------------------------------------------
    Main Application
@@ -171,7 +179,7 @@ st.markdown("""
 
 .block-container {
     padding-top: 2rem;
-    padding-bottom: 3rem;
+    padding-bottom: 7rem;
 }
 
 
@@ -323,26 +331,123 @@ div[role="option"]:hover {
 
 
 /* ----------------------------------------------------------
-   Disclaimer
+   Project Resources
 ---------------------------------------------------------- */
 
-.disclaimer {
+.resources-intro {
+    color: #4b5563 !important;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.documentation-card {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-left: 5px solid #2563eb;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 8px 0 18px 0;
+}
+
+.documentation-title {
+    color: #172033 !important;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.documentation-text {
+    color: #4b5563 !important;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 13px;
+}
+
+.documentation-link {
+    display: inline-block;
+    background-color: #2563eb;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.documentation-link:hover {
+    background-color: #1d4ed8;
+    color: #ffffff !important;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.resource-card {
+    background-color: #ffffff;
+    border: 1px solid #dbe3ef;
+    border-radius: 10px;
+    padding: 14px;
+    min-height: 92px;
+}
+
+.resource-card-title {
+    color: #172033 !important;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.resource-card-text {
+    color: #4b5563 !important;
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 8px;
+}
+
+.resource-card a {
+    color: #2563eb !important;
+    font-weight: 700;
+    text-decoration: none !important;
+}
+
+.resource-card a:hover {
+    color: #1d4ed8 !important;
+    text-decoration: underline !important;
+}
+
+
+/* ----------------------------------------------------------
+   Fixed Medical Disclaimer Footer
+---------------------------------------------------------- */
+
+.app-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
     background-color: #fff8dc;
 
     color: #5b4a00 !important;
 
-    padding: 16px;
+    padding: 10px 24px;
 
-    border-radius: 12px;
+    border-top: 1px solid #f1d879;
 
-    border: 1px solid #f1d879;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
 
-    margin-bottom: 26px;
+    z-index: 999999;
 
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.45;
 }
 
-.disclaimer b {
+.app-footer b {
     color: #4a3b00 !important;
 }
 
@@ -363,6 +468,35 @@ div[role="option"]:hover {
 
 [data-testid="stDataFrame"] {
     background-color: #ffffff;
+}
+
+
+/* ----------------------------------------------------------
+   Responsive Resource Layout
+---------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .resource-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .resource-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-title {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
 }
 
 </style>
@@ -387,18 +521,143 @@ st.markdown(
 
 
 # ============================================================
-# Medical Disclaimer
+# Project Resources & Documentation
 # ============================================================
 
-st.markdown("""
-<div class="disclaimer">
+st.markdown(
+    '<div class="section-title">'
+    '📚 Project Resources & Documentation'
+    '</div>',
+    unsafe_allow_html=True
+)
 
-<b>Medical Disclaimer:</b>
-This application is an academic machine learning project
-intended for educational and demonstration purposes only.
-It is not a medical diagnostic tool and should not be used
-as a substitute for professional medical advice, diagnosis,
-or treatment.
+st.markdown(
+    '<div class="resources-intro">'
+    'Explore the project resources below. If you are unfamiliar '
+    'with the medical terminology used in the patient parameters, '
+    'please read the documentation first.'
+    '</div>',
+    unsafe_allow_html=True
+)
+
+
+# ------------------------------------------------------------
+# Documentation Highlight
+# ------------------------------------------------------------
+
+st.markdown("""
+<div class="documentation-card">
+
+<div class="documentation-title">
+📖 Understand the Features First
+</div>
+
+<div class="documentation-text">
+The parameters below use medical terminology and
+dataset-specific categories. Before entering values,
+please review the documentation to understand what
+each feature represents, its significance in the dataset,
+and the distinction between a condition/category and
+its encoded value.
+</div>
+
+<a
+    class="documentation-link"
+    href="https://example.com/documentation"
+    target="_blank"
+>
+    📖 Read Documentation →
+</a>
+
+</div>
+""", unsafe_allow_html=True)
+
+
+# ------------------------------------------------------------
+# Additional Resources
+# ------------------------------------------------------------
+
+st.markdown("""
+<div class="resource-grid">
+
+<div class="resource-card">
+
+<div class="resource-card-title">
+💻 GitHub Repository
+</div>
+
+<div class="resource-card-text">
+Explore the project's source code and implementation.
+</div>
+
+<a
+    href="https://github.com/your-username/your-repository"
+    target="_blank"
+>
+    View Repository →
+</a>
+
+</div>
+
+
+<div class="resource-card">
+
+<div class="resource-card-title">
+📊 Dataset
+</div>
+
+<div class="resource-card-text">
+View the dataset used for model development and evaluation.
+</div>
+
+<a
+    href="https://example.com/dataset"
+    target="_blank"
+>
+    View Dataset →
+</a>
+
+</div>
+
+
+<div class="resource-card">
+
+<div class="resource-card-title">
+🧪 ML Notebook
+</div>
+
+<div class="resource-card-text">
+Review preprocessing, training, evaluation and visualizations.
+</div>
+
+<a
+    href="https://example.com/notebook"
+    target="_blank"
+>
+    View Notebook →
+</a>
+
+</div>
+
+
+<div class="resource-card">
+
+<div class="resource-card-title">
+📋 Technical Documentation
+</div>
+
+<div class="resource-card-text">
+Learn about the workflow, methodology and implementation.
+</div>
+
+<a
+    href="https://example.com/technical-documentation"
+    target="_blank"
+>
+    View Documentation →
+</a>
+
+</div>
 
 </div>
 """, unsafe_allow_html=True)
@@ -684,7 +943,6 @@ if out_of_training_range:
                 
                 </div>
                 """, unsafe_allow_html=True)
-
 
     for message in out_of_training_range:
         st.caption(f"- {message}")
@@ -1192,13 +1450,18 @@ elif selected_model_name == "KNN":
 
 
 # ============================================================
-# Footer Disclaimer
+# Fixed Medical Disclaimer Footer
 # ============================================================
 
-st.divider()
+st.markdown("""
+<div class="app-footer">
 
-st.success(
-    "Educational ML demonstration only. Model predictions are "
-    "not medical diagnoses and should not be used as a substitute "
-    "for professional medical advice."
-)
+<b>Medical Disclaimer:</b>
+This application is an academic machine learning project
+intended for educational and demonstration purposes only.
+It is not a medical diagnostic tool and should not be used
+as a substitute for professional medical advice, diagnosis,
+or treatment.
+
+</div>
+""", unsafe_allow_html=True)
