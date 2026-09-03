@@ -43,7 +43,7 @@ except FileNotFoundError as error:
     st.error(
         "A required final model file could not be found. "
         "Please make sure the 'Final Models' folder is present "
-        "beside App1.py and contains all three .pkl files."
+        "beside App.py and contains all three .pkl files."
     )
 
     st.stop()
