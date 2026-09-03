@@ -997,7 +997,7 @@ st.write("")
 
 if st.button(
     "Predict Heart Disease",
-    use_container_width=True
+    width='stretch'
 ):
 
     prediction = selected_model.predict(
@@ -1094,25 +1094,25 @@ if st.button(
         ],
 
         "Value": [
-            age,
+            str(age),
             sex_label,
             cp_label,
-            trestbps,
-            chol,
+            str(trestbps),
+            str(chol),
             fbs_label,
             restecg_label,
-            thalach,
+            str(thalach),
             exang_label,
-            oldpeak,
+            str(oldpeak),
             slope_label,
-            ca,
+            str(ca),
             thal_label
         ]
     })
 
     st.dataframe(
         display_input,
-        use_container_width=True,
+        width='stretch',
         hide_index=True
     )
 
