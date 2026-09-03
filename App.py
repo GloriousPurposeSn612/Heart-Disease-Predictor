@@ -142,7 +142,7 @@ TRAINING_RANGES = {
 
 st.set_page_config(
     page_title="Heart Disease Predictor",
-    page_icon="❤️",
+    page_icon="favicon.png",
     layout="wide"
 )
 

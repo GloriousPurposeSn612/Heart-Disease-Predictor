@@ -1,6 +1,7 @@
 .venv/
 .vscode/
 App 0.py
+favicon.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
