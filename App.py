@@ -520,6 +520,30 @@ st.markdown(
 )
 
 
+# =========================
+# Global Button Styling
+# =========================
+
+st.markdown("""
+<style>
+
+div.stLinkButton > a {
+    background-color: #000000 !important;
+    color: white !important;
+    border: none !important;
+    transition: background-color 0.5s ease, opacity 0.5s ease;
+}
+
+div.stLinkButton > a:hover {
+    background-color: #4387D6 !important;
+    color: white !important;
+    opacity: 0.85 !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
 # ============================================================
 # Project Resources & Documentation
 # ============================================================
@@ -549,7 +573,7 @@ st.markdown("""
 <div class="documentation-card">
 
 <div class="documentation-title">
-📖 Understand the Features First
+📖 Understand The Features First
 </div>
 
 <div class="documentation-text">
@@ -561,16 +585,13 @@ and the distinction between a condition/category and
 its encoded value.
 </div>
 
-<a
-    class="documentation-link"
-    href="https://example.com/documentation"
-    target="_blank"
->
-    📖 Read Documentation →
-</a>
-
 </div>
 """, unsafe_allow_html=True)
+
+st.link_button(
+    "📖 Read Documentation →",
+    "https://github.com/GloriousPurposeSn612/Heart-Disease-Predictor/blob/main/Medical%20Terms.md"
+)
 
 
 # ------------------------------------------------------------
@@ -590,13 +611,12 @@ st.markdown("""
 Explore the project's source code and implementation.
 </div>
 
-<a
-    href="https://github.com/your-username/your-repository"
-    target="_blank"
->
+<a class="resource-button"
+   href="https://github.com/GloriousPurposeSn612/Heart-Disease-Predictor"
+   target="_blank">
     View Repository →
 </a>
-
+            
 </div>
 
 
@@ -610,10 +630,9 @@ Explore the project's source code and implementation.
 View the dataset used for model development and evaluation.
 </div>
 
-<a
-    href="https://example.com/dataset"
-    target="_blank"
->
+<a class="resource-button"
+   href="https://github.com/GloriousPurposeSn612/Heart-Disease-Predictor/blob/main/data.csv"
+   target="_blank">
     View Dataset →
 </a>
 
@@ -630,11 +649,10 @@ View the dataset used for model development and evaluation.
 Review preprocessing, training, evaluation and visualizations.
 </div>
 
-<a
-    href="https://example.com/notebook"
-    target="_blank"
->
-    View Notebook →
+<a class="resource-button"
+   href="https://github.com/GloriousPurposeSn612/Heart-Disease-Predictor/blob/main/HDP_Model.ipynb"
+   target="_blank">
+    Open Notebook →
 </a>
 
 </div>
@@ -650,11 +668,10 @@ Review preprocessing, training, evaluation and visualizations.
 Learn about the workflow, methodology and implementation.
 </div>
 
-<a
-    href="https://example.com/technical-documentation"
-    target="_blank"
->
-    View Documentation →
+<a class="resource-button"
+   href="https://github.com/GloriousPurposeSn612/Heart-Disease-Predictor/blob/main/README.md"
+   target="_blank">
+    Read Documentation →
 </a>
 
 </div>
