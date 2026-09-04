@@ -1,4 +1,4 @@
-# ❤️ Heart Disease Predictor
+# ❤️ Heart Disease Predictor | [![Open In Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://heart-disease-predictor-dfktkm.streamlit.app/)
 
 A machine-learning based academic project that compares classification algorithms and provides an interactive Streamlit interface for exploring heart-disease predictions.
 
