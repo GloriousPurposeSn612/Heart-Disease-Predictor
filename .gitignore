@@ -1,7 +1,6 @@
 .venv/
 .vscode/
 App 0.py
-Assets/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
